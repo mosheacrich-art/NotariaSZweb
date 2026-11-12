@@ -200,6 +200,40 @@ mark{background:rgba(12,77,162,.14);color:inherit}
 .sc.rv.in{opacity:1;transform:none}
 .sc.rv .ph{transition:transform 1.4s cubic-bezier(.2,.7,.2,1)}
 @media(prefers-reduced-motion:reduce){.sc.rv{opacity:1;transform:none}}
+
+/* ficha: jerarquía y separación */
+.dsec{margin-top:2.6rem;background:var(--paper);border-top:3px solid var(--navy);padding:clamp(1.3rem,3vw,2rem) clamp(1rem,3vw,2rem) clamp(1.4rem,3vw,2rem)}
+.dsec .dh{margin:0 0 1rem;padding-top:0;border-top:0}
+.dsec .dh .eyebrow{display:block;margin-bottom:.4rem}
+.dsec .pbar{background:#dde3ea;margin-bottom:1.3rem}
+.dsec .note{background:#fff}
+.dsec .tools2 button{background:transparent}
+.dc{border-color:#e1e6ec;box-shadow:0 1px 2px rgba(0,32,52,.05)}
+.dc h4{font:500 1.14rem/1.3 'Libre Caslon Text',serif;letter-spacing:0;text-transform:none;color:var(--navy);margin:0 0 .35rem}
+.dc .bs{margin:0 0 .7rem;font-size:.86rem;line-height:1.5}
+.dch svg,.wzd .dc>h4 svg,.wzd .acc svg{width:28px;height:28px;stroke:var(--blue);fill:none;stroke-width:1.4;flex:none}
+.dch svg{display:block;margin-bottom:.75rem}
+.docs:not(.wzd){grid-template-columns:1fr;gap:.9rem}
+.docs:not(.wzd) .dc{display:grid;grid-template-columns:minmax(0,12.5rem) minmax(0,1fr);gap:0 2rem;padding:1.4rem 1.5rem .5rem}
+.dcl .dn{margin-top:.2rem}
+.dc li button{padding:.8rem 0}
+.dc li button span{font-size:.9rem;line-height:1.5;color:var(--mute)}
+.dc li button b{font-size:1.02rem;color:var(--navy)}
+.dc li button span.pl{font-size:.97rem;color:var(--ink)}
+.dc li.sub{font:500 1rem 'Libre Caslon Text',serif;color:var(--navy);padding:.9rem 0 .3rem;border-top:1px solid var(--line)}
+.dc li.sub:first-child{border-top:0;padding-top:.2rem}
+.wzd .dc>h4,.wzd .dc>.acc{display:flex;align-items:center;gap:.8rem}
+.wzd .dc>.acc{font:500 1.14rem 'Libre Caslon Text',serif;letter-spacing:0;text-transform:none;color:var(--navy)}
+.wzd .acc .ct2{font-family:'Source Sans 3',sans-serif}
+.wzd .dc>h4,.wzd .dc>.acc{padding:1.15rem 1.3rem}
+.wzd .dc .bs{margin:-.6rem 1.3rem .7rem calc(1.3rem + 28px + .8rem)}
+.wzd .dcb{padding:0 1.3rem .6rem calc(1.3rem + 28px + .8rem)}
+@media(max-width:700px){
+.docs:not(.wzd) .dc{grid-template-columns:1fr;padding:1.1rem 1.1rem .4rem}
+.dch{display:grid;grid-template-columns:24px 1fr;gap:0 .7rem;align-items:center;padding-bottom:.7rem;border-bottom:1px solid var(--line)}
+.dch svg{width:24px;height:24px;margin:0}.dch .bs{grid-column:1/-1;margin:.4rem 0 0}.dc h4{margin:0}
+.wzd .dcb{padding:0 1.1rem .5rem}.wzd .dc .bs{margin:-.6rem 1.1rem .7rem}
+.dsec{margin-inline:-16px;border-left:0;border-right:0}}
 </style></head><body>
 %%HEADER%%
 <main>
@@ -265,6 +299,8 @@ function wzApply(s,t){var key=s.id+'/'+t.id,v=wzSel[key]||(wzSel[key]={who:'pf',
  document.querySelectorAll('#docs .dc[data-r=pj]').forEach(function(d){d.hidden=v.who!=='pj'});
  document.querySelectorAll('#docs li[data-nat]').forEach(function(l){l.hidden=l.getAttribute('data-nat')!==v.nat});
  document.querySelectorAll('#docs .dc').forEach(function(d){var n=0,tot=0;d.querySelectorAll('li button').forEach(function(b){if(!b.closest('[hidden]')){tot++;if(b.getAttribute('aria-pressed')==='true')n++}});var c=d.querySelector('.ct2');if(c)c.textContent=n+'/'+tot})}
+var RIC={pf:'<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.6"/><path d="M4.5 20c.8-4 3.8-6 7.5-6s6.7 2 7.5 6"/></svg>',pj:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 21V5l8-2v18M12 8h8v13M2 21h20M7 8h2M7 12h2M7 16h2M15 12h2M15 16h2"/></svg>',c:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4M9 12h6M9 16h6"/></svg>',ad:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4M12 11v6M9 14h6"/></svg>'};
+function ricon(b){var r=wzRole(b);return RIC[r==='c'&&/adicional/i.test(b.t)?'ad':r]}
 function detail(s,t,ti){
  var n=nTr(s),multi=n>1,h='';
  if(multi||s.steps){h+='<span class="kick">'+(s.steps?'Paso / opción '+(ti+1)+' de '+n:'Trámite '+('0'+(ti+1)).slice(-2)+' de '+n)+'</span><h2>'+esc(t.t)+'</h2>';
@@ -277,7 +313,7 @@ function detail(s,t,ti){
  if(t.n&&!t.docs&&!t.nod)h+='<div class="note">'+esc(t.n)+'</div>';
  if(!s.steps&&!t.nod){
   var key=s.id+'/'+t.id;var st=checks[key]||(checks[key]={});
-  h+='<div class="dh"><h3>Documentación necesaria para la firma</h3>'+(t.docs?'<span class="prog" id="prog"></span>':'')+'</div>';
+  h+='<div class="dsec"><div class="dh"><div><span class="eyebrow">Antes de la cita</span><h3>Documentación necesaria para la firma</h3></div>'+(t.docs?'<span class="prog" id="prog"></span>':'')+'</div>';
   if(t.docs){
    h+='<div class="pbar" aria-hidden="true"><i id="pb"></i></div>';
    if(s.wiz){var wr=wzRole,hasPJ=t.docs.some(function(b){return wr(b)==='pj'}),hasNat=t.docs.some(function(b){return b.l.some(function(x){return !!wzNat(x)})});
@@ -289,19 +325,20 @@ function detail(s,t,ti){
      var lis=b.l.map(function(it){
       if(/:$/.test(it))return '<li class="sub">'+esc(it)+'</li>';
       var id=c++,nat=wzNat(it),opt=/\(si |si procede|si es el caso|se puede exonerar|puede solicitar/i.test(it);
-      return '<li'+(nat?' data-nat="'+nat+'"':'')+'><button type="button" data-c="'+id+'" aria-pressed="'+(st[id]?'true':'false')+'"><i></i><span>'+fmt(it)+'</span></button></li>'+(opt?'<li class="tgw"><em class="tg">Si aplica</em></li>':'')}).join('');
+      return '<li'+(nat?' data-nat="'+nat+'"':'')+'><button type="button" data-c="'+id+'" aria-pressed="'+(st[id]?'true':'false')+'"><i></i><span'+(/\*\*/.test(it)?'':' class="pl"')+'>'+fmt(it)+'</span></button></li>'+(opt?'<li class="tgw"><em class="tg">Si aplica</em></li>':'')}).join('');
      var coll=role==='c'&&/adicional/i.test(b.t);
-     h+='<div class="dc'+(coll?' col':'')+'" data-r="'+role+'"'+(role==='pj'?' hidden':'')+'>'+(role==='c'?'<button type="button" class="acc" aria-expanded="'+(coll?'false':'true')+'">'+esc(b.t)+'<span class="ct2"></span></button>':'<h4>'+esc(b.t)+'</h4>')+(b.s?'<p class="bs">'+esc(b.s)+'</p>':'')+'<div class="dcb"><ul>'+lis+'</ul>'+(b.n?'<p class="dn">'+esc(b.n)+'</p>':'')+'</div></div>';
+     h+='<div class="dc'+(coll?' col':'')+'" data-r="'+role+'"'+(role==='pj'?' hidden':'')+'>'+(role==='c'?'<button type="button" class="acc" aria-expanded="'+(coll?'false':'true')+'">'+ricon(b)+esc(b.t)+'<span class="ct2"></span></button>':'<h4>'+ricon(b)+esc(b.t)+'</h4>')+(b.s?'<p class="bs">'+esc(b.s)+'</p>':'')+'<div class="dcb"><ul>'+lis+'</ul>'+(b.n?'<p class="dn">'+esc(b.n)+'</p>':'')+'</div></div>';
      return}
-    h+='<div class="dc"><h4>'+esc(b.t)+'</h4>'+(b.s?'<p class="bs">'+esc(b.s)+'</p>':'')+'<ul>'+b.l.map(function(it){
+    h+='<div class="dc" data-r="'+wzRole(b)+'"><div class="dch">'+ricon(b)+'<h4>'+esc(b.t)+'</h4>'+(b.s?'<p class="bs">'+esc(b.s)+'</p>':'')+'</div><div class="dcl"><ul>'+b.l.map(function(it){
       if(/:$/.test(it))return '<li class="sub">'+esc(it)+'</li>';
-      var id=c++;return '<li><button type="button" data-c="'+id+'" aria-pressed="'+(st[id]?'true':'false')+'"><i></i><span>'+fmt(it)+'</span></button></li>'}).join('')+'</ul>'+(b.n?'<p class="dn">'+esc(b.n)+'</p>':'')+'</div>'});
+      var id=c++;return '<li><button type="button" data-c="'+id+'" aria-pressed="'+(st[id]?'true':'false')+'"><i></i><span'+(/\*\*/.test(it)?'':' class="pl"')+'>'+fmt(it)+'</span></button></li>'}).join('')+'</ul>'+(b.n?'<p class="dn">'+esc(b.n)+'</p>':'')+'</div></div>'});
    h+='</div>';
    if(t.n)h+='<div class="note">'+esc(t.n)+'</div>';
    h+='<div class="tools2"><button type="button" id="cp">Copiar lista de documentos</button><button type="button" id="rs">Marcar todo como pendiente</button></div>';
   }else{
    h+='<div class="help"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/></svg><p>La documentación exacta depende de cada operación. Cuéntenos su caso y le indicamos qué debe traer antes de la cita.'+(t.n?' <br><br>'+esc(t.n):'')+'</p></div>';
   }
+  h+='</div>';
  }
  if(multi){var p=s.g[ti-1],nx=s.g[ti+1];
   h+='<div class="pn">'+(p?'<button type="button" data-t="'+(ti-1)+'"><small>Anterior</small>'+esc(p.t)+'</button>':'<span></span>')+(nx?'<button type="button" data-t="'+(ti+1)+'"><small>Siguiente</small>'+esc(nx.t)+'</button>':'')+'</div>'}
