@@ -322,7 +322,7 @@ mark{background:rgba(12,77,162,.14);color:inherit}
 <h5>Contacto</h5><p>T. +34 93 595 54 70</p><p>F. +34 93 595 54 72</p><p>info@notariasz.com</p></div>
 <div class="fc"><h5>Horario</h5><p>Lunes a Jueves: de 9 a 19 horas.<br>Viernes: de 9 a 14 horas.</p>
 <h5 class="sp">Desplazamiento</h5><p>Servicio de desplazamiento<br>del notario</p></div>
-<div class="fn"><a href="index.html">La notaría</a><a href="servicios.html">Servicios notariales</a><a href="equipo.html">Equipo</a><a href="blog.html">Blog</a><a href="index.html#consulta">Contacto</a><a href="servicios.html#videoconferencias">Videoconferencias</a>
+<div class="fn"><a href="index.html">La notaría</a><a href="servicios.html">Servicios notariales</a><a href="equipo.html">Equipo</a><a href="blog.html">Blog</a><a href="index.html#consulta">Contacto</a><a href="videofirma.html">Videoconferencias</a>
 <a class="in" href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.2 9.2h2.9V19H5.2zM6.65 4.6a1.7 1.7 0 1 1 0 3.4 1.7 1.7 0 0 1 0-3.4zM10 9.2h2.8v1.3c.5-.9 1.6-1.5 3-1.5 3 0 3.6 2 3.6 4.5V19h-2.9v-4.9c0-1.2 0-2.6-1.6-2.6s-1.9 1.2-1.9 2.5V19H10z"/></svg></a></div>
 </div>
 <p class="legal">© 2026 Notaria en Barcelona. Todos los derechos reservados. Esta web no tiene finalidad comercial. Su propósito es meramente informativo. | Aviso legal | Política de privacidad | Política de cookies</p>
@@ -512,7 +512,7 @@ function nTr(s){return s.g.length}
 function renderIdx(){
  var cards=S.map(function(s){var n=nTr(s);
   var sub=s.steps?'Alta y acceso al Portal':(n>1?n+' trámites':'Trámite único');
-  return '<a class="sc" href="#'+s.id+'"><div class="ph" data-bg="'+(s.img||'')+'">'+icon(s)+'</div><div class="bd"><span class="n">'+s.num+' · '+sub.toUpperCase()+'</span><h3>'+esc(s.n)+'</h3><p>'+esc(s.intro.replace(/\*\*/g,''))+'</p><span class="ft2">Ver servicio</span></div></a>'}).join('');
+  return '<a class="sc" href="'+(s.id==='videoconferencias'?'videofirma.html':'#'+s.id)+'"><div class="ph" data-bg="'+(s.img||'')+'">'+icon(s)+'</div><div class="bd"><span class="n">'+s.num+' · '+sub.toUpperCase()+'</span><h3>'+esc(s.n)+'</h3><p>'+esc(s.intro.replace(/\*\*/g,''))+'</p><span class="ft2">Ver servicio</span></div></a>'}).join('');
  var total=0;S.forEach(function(s){if(!s.steps)total+=nTr(s)});
  $('#vIdx').innerHTML='<section class="mast" style="--mb:url('+IMG.ph.mast+')"><div class="w"><span class="eyebrow">Servicios notariales</span><h1>Todo lo que necesita,<br><em>en un solo lugar</em>.</h1><p class="lede">Elija su área y le explicamos qué es cada trámite y qué documentos debe aportar para la firma.</p>'+
  '<div class="gs"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><input id="gq" type="search" placeholder="¿Qué necesita hacer? Ej.: divorcio, poder, hipoteca…" autocomplete="off" aria-label="Buscar trámite"><div id="gres" class="res" hidden></div></div></div></section>'+
@@ -621,6 +621,7 @@ function bind(s,ti){
 var last='';
 function route(){
  var h=decodeURIComponent(location.hash.slice(1)),parts=h.split('--'),s=byId[parts[0]];
+ if(parts[0]==='videoconferencias'){location.replace('videofirma.html');return}
  if(!s){ $('#vSvc').hidden=true;$('#vIdx').hidden=false;if(last!=='idx'||!$('#sg'))renderIdx();document.title='Servicios notariales — Notaría Sultán-Zulueta';if(last!=='idx')scrollTo(0,0);last='idx';return}
  var ti=0;if(parts[1]){s.g.forEach(function(x,k){if(x.id===parts[1])ti=k})}
  var same=(last===s.id);

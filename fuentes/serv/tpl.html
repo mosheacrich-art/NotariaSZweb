@@ -262,7 +262,7 @@ function nTr(s){return s.g.length}
 function renderIdx(){
  var cards=S.map(function(s){var n=nTr(s);
   var sub=s.steps?'Alta y acceso al Portal':(n>1?n+' trámites':'Trámite único');
-  return '<a class="sc" href="#'+s.id+'"><div class="ph" data-bg="'+(s.img||'')+'">'+icon(s)+'</div><div class="bd"><span class="n">'+s.num+' · '+sub.toUpperCase()+'</span><h3>'+esc(s.n)+'</h3><p>'+esc(s.intro.replace(/\*\*/g,''))+'</p><span class="ft2">Ver servicio</span></div></a>'}).join('');
+  return '<a class="sc" href="'+(s.id==='videoconferencias'?'videofirma.html':'#'+s.id)+'"><div class="ph" data-bg="'+(s.img||'')+'">'+icon(s)+'</div><div class="bd"><span class="n">'+s.num+' · '+sub.toUpperCase()+'</span><h3>'+esc(s.n)+'</h3><p>'+esc(s.intro.replace(/\*\*/g,''))+'</p><span class="ft2">Ver servicio</span></div></a>'}).join('');
  var total=0;S.forEach(function(s){if(!s.steps)total+=nTr(s)});
  $('#vIdx').innerHTML='<section class="mast" style="--mb:url('+IMG.ph.mast+')"><div class="w"><span class="eyebrow">Servicios notariales</span><h1>Todo lo que necesita,<br><em>en un solo lugar</em>.</h1><p class="lede">Elija su área y le explicamos qué es cada trámite y qué documentos debe aportar para la firma.</p>'+
  '<div class="gs"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><input id="gq" type="search" placeholder="¿Qué necesita hacer? Ej.: divorcio, poder, hipoteca…" autocomplete="off" aria-label="Buscar trámite"><div id="gres" class="res" hidden></div></div></div></section>'+
@@ -371,6 +371,7 @@ function bind(s,ti){
 var last='';
 function route(){
  var h=decodeURIComponent(location.hash.slice(1)),parts=h.split('--'),s=byId[parts[0]];
+ if(parts[0]==='videoconferencias'){location.replace('videofirma.html');return}
  if(!s){ $('#vSvc').hidden=true;$('#vIdx').hidden=false;if(last!=='idx'||!$('#sg'))renderIdx();document.title='Servicios notariales — Notaría Sultán-Zulueta';if(last!=='idx')scrollTo(0,0);last='idx';return}
  var ti=0;if(parts[1]){s.g.forEach(function(x,k){if(x.id===parts[1])ti=k})}
  var same=(last===s.id);
