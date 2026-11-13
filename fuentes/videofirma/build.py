@@ -20,7 +20,7 @@ base = '\n'.join(lines[:a]) + '\n[hidden]{display:none!important}\n'
 foot = '\n'.join(lines[f:m + 1])
 
 header = re.search(r'<header id="hd">.*?</header>', blog, re.S).group(0)
-header = re.sub(r'<nav>.*?</nav>', '<nav><a class="on" href="servicios.html">Servicios</a><a href="index.html#proceso">Cómo trabajamos</a><a href="equipo.html">Equipo</a><a href="blog.html">Blog</a><a href="index.html#consulta">Contacto</a></nav>', header, flags=re.S)
+header = re.sub(r'<nav>.*?</nav>', '<nav><a href="servicios.html">Servicios</a><a class="on" href="videofirma.html" aria-current="page">Videofirma</a><a href="index.html#proceso">Cómo trabajamos</a><a href="equipo.html">Equipo</a><a href="blog.html">Blog</a><a href="index.html#consulta">Contacto</a></nav>', header, flags=re.S)
 footer = re.search(r'<footer class="ft">.*?</footer>', blog, re.S).group(0)
 menujs = re.search(r"<script>\(function\(\)\{var h=document.getElementById\('hd'\).*?</script>", blog, re.S).group(0)
 ariel = re.search(r'<div class="im ia rv"><img src="(data:[^"]+)"', idx).group(1)

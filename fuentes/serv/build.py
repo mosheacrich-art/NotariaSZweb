@@ -9,7 +9,7 @@ b=next(i for i,l in enumerate(lines) if l.startswith('/* footer'))
 base='\n'.join(lines[:a])+'\n[hidden]{display:none!important}\n'
 foot='\n'.join(lines[b:])
 header=re.search(r'<header id="hd">.*?</header>',blog,re.S).group(0)
-header=re.sub(r'<nav>.*?</nav>','<nav><a class="on" href="servicios.html" aria-current="page">Servicios</a><a href="index.html#proceso">Cómo trabajamos</a><a href="equipo.html">Equipo</a><a href="blog.html">Blog</a><a href="index.html#consulta">Contacto</a></nav>',header,flags=re.S)
+header=re.sub(r'<nav>.*?</nav>','<nav><a class="on" href="servicios.html" aria-current="page">Servicios</a><a href="videofirma.html">Videofirma</a><a href="index.html#proceso">Cómo trabajamos</a><a href="equipo.html">Equipo</a><a href="blog.html">Blog</a><a href="index.html#consulta">Contacto</a></nav>',header,flags=re.S)
 footer=re.search(r'<footer class="ft">.*?</footer>',blog,re.S).group(0)
 footer=footer.replace('<a href="index.html#servicios">Servicios notariales</a>','<a href="servicios.html">Servicios notariales</a>').replace('<a href="#">Videoconferencias</a>','<a href="servicios.html#videoconferencias">Videoconferencias</a>')
 def b64(im,fmt,**k):
