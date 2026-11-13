@@ -1,5 +1,5 @@
 # Genera videofirma.html a partir de tpl.html, reutilizando cabecera, pie, menú móvil
-# y estilos base de blog.html, y la foto del notario de index.html.
+# y estilos base de blog.html.
 # Uso: python3 fuentes/videofirma/build.py
 import os, re
 
@@ -8,7 +8,6 @@ ROOT = os.path.join(HERE, '..', '..')
 rd = lambda p: open(os.path.join(ROOT, p), encoding='utf-8').read()
 
 blog = rd('blog.html')
-idx = rd('index.html')
 tpl = open(os.path.join(HERE, 'tpl.html'), encoding='utf-8').read()
 
 css = re.search(r'<style>\n?(.*?)</style>', blog, re.S).group(1)
@@ -23,11 +22,10 @@ header = re.search(r'<header id="hd">.*?</header>', blog, re.S).group(0)
 header = re.sub(r'<nav>.*?</nav>', '<nav><a href="servicios.html">Servicios</a><a class="on" href="videofirma.html" aria-current="page">Videofirma</a><a href="index.html#proceso">Cómo trabajamos</a><a href="equipo.html">Equipo</a><a href="blog.html">Blog</a><a href="index.html#consulta">Contacto</a></nav>', header, flags=re.S)
 footer = re.search(r'<footer class="ft">.*?</footer>', blog, re.S).group(0)
 menujs = re.search(r"<script>\(function\(\)\{var h=document.getElementById\('hd'\).*?</script>", blog, re.S).group(0)
-ariel = re.search(r'<div class="im ia rv"><img src="(data:[^"]+)"', idx).group(1)
 
 out = (tpl.replace('%%BASECSS%%', base).replace('%%FOOTCSS%%', foot)
           .replace('%%HEADER%%', header).replace('%%FOOTER%%', footer)
-          .replace('%%MENUJS%%', menujs).replace('%%ARIEL%%', ariel))
+          .replace('%%MENUJS%%', menujs))
 assert '%%' not in out
 open(os.path.join(ROOT, 'videofirma.html'), 'w', encoding='utf-8').write(out)
 print(len(out) // 1024, 'KB')
