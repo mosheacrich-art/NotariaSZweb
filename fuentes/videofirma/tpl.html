@@ -150,14 +150,14 @@ section.blk{padding-block:clamp(3.2rem,7vw,5.6rem)}
 .vid{position:relative;overflow:hidden}
 .vid img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 22%;filter:saturate(.95)}
 .vid:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.25),transparent 25%,transparent 70%,rgba(0,0,0,.55))}
-.vid .nm{position:absolute;left:180px;bottom:84px;z-index:2;color:#fff;font:600 14px 'Source Sans 3';background:rgba(0,0,0,.45);padding:5px 10px;border-radius:6px}
+.vid .nm{position:absolute;left:18px;top:52px;z-index:2;color:#fff;font:600 14px 'Source Sans 3';background:rgba(0,0,0,.45);padding:5px 10px;border-radius:6px}
 .vid .rec{position:absolute;left:18px;top:16px;z-index:2;display:flex;gap:8px;align-items:center;color:#fff;font:600 12px 'Source Sans 3';letter-spacing:.06em;background:rgba(0,0,0,.45);padding:5px 10px;border-radius:99px}
 .vid .rec i{width:8px;height:8px;border-radius:50%;background:#ff4d4d;animation:blink 1.4s infinite}
 @keyframes blink{50%{opacity:.25}}
 .self{position:absolute;left:18px;bottom:76px;z-index:2;width:150px;height:100px;border-radius:10px;background:linear-gradient(160deg,#5a6b7d,#33404e);border:2px solid rgba(255,255,255,.7);overflow:hidden}
 .self:before{content:"";position:absolute;left:50%;top:22px;width:34px;height:34px;margin-left:-17px;border-radius:50%;background:#c9d3de}
 .self:after{content:"";position:absolute;left:50%;bottom:-24px;width:84px;height:56px;margin-left:-42px;border-radius:50%;background:#c9d3de}
-.ctr{position:absolute;left:0;right:0;bottom:16px;z-index:2;display:flex;justify-content:center;gap:12px}
+.ctr{position:absolute;left:0;right:0;bottom:78px;z-index:2;display:flex;justify-content:center;gap:12px}
 .ctr i{width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.18);display:grid;place-items:center}
 .ctr i svg{width:20px;height:20px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .ctr i.end{background:#e5484d}
@@ -189,14 +189,15 @@ section.blk{padding-block:clamp(3.2rem,7vw,5.6rem)}
 .signed .af .bd{display:none}.signed .af .done{display:block}
 /* capturas reales */
 .shots{position:absolute;inset:0;background:#eef1f5;cursor:pointer}
-.shots img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 0;opacity:0;transition:opacity .5s}
-.shots img.fit{object-fit:contain;object-position:50% 50%;background:#f2f3f5}
-.shots img.on{opacity:1}
-.shcap{position:absolute;left:16px;bottom:16px;z-index:2;display:flex;align-items:center;gap:10px;background:rgba(0,32,52,.88);color:#fff;font:600 14px 'Source Sans 3';padding:8px 14px 8px 10px;border-radius:99px;box-shadow:0 10px 24px -12px rgba(0,0,0,.5)}
+.shots>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 0;opacity:0;transition:opacity .5s}
+.simslide{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity .5s,visibility .5s;cursor:default}.simslide.on{opacity:1;visibility:visible}
+.shots>img.fit{object-fit:contain;object-position:50% 50%;background:#f2f3f5}
+.shots>img.on{opacity:1}
+.shcap{position:absolute;right:56px;bottom:16px;max-width:560px;z-index:2;display:flex;align-items:center;gap:10px;background:rgba(0,32,52,.88);color:#fff;font:600 14px 'Source Sans 3';padding:8px 14px 8px 10px;border-radius:99px;box-shadow:0 10px 24px -12px rgba(0,0,0,.5)}
 .shcap b{display:grid;place-items:center;min-width:26px;height:26px;border-radius:99px;background:#fff;color:var(--navy);font:700 12px 'Source Sans 3';padding:0 6px}
-.shdots{position:absolute;right:16px;bottom:22px;z-index:2;display:flex;gap:8px}
-.shdots i{width:10px;height:10px;border-radius:50%;background:rgba(0,32,52,.25);box-shadow:0 0 0 2px #fff;cursor:pointer}
-.shdots i.on{background:var(--blue)}
+.shdots{display:flex;gap:7px;margin-left:4px}
+.shdots i{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.35);cursor:pointer}
+.shdots i.on{background:#fff}
 .sim.real{color:#0e6b3b;background:#e3f6ea;border-color:#9fd8b5}
 /* móvil · pantallas */
 .pa{height:100%;display:flex;flex-direction:column;background:#f6f8fb}
@@ -418,7 +419,7 @@ var S=[
 {t:'Solicitar el trámite',shots:[['w3-actas','Elija el trámite: por ejemplo, Actas'],['w3-manifestacion','Actas de manifestaciones › «Iniciar solicitud»'],['w3-buscador','Busque a su notario'],['w3-notario','Seleccione notario y marque «Videoconferencia»']],d:'Elija el trámite (por ejemplo, Actas › Actas de manifestación) y pulse «Iniciar solicitud». Revise los intervinientes, adjunte el documento si lo tiene, elija la Notaría Sultán-Zulueta y marque «Videoconferencia». El notario le contactará y le enviará el borrador.',
  web:bh(USER)+'<div class="b2"><h3>Actas de manifestación · Nueva solicitud</h3><div class="wz"><div class="d"><i>✓</i>Intervinientes</div><div class="d"><i>✓</i>Documento</div><div class="c"><i>3</i>Notario</div><div><i>4</i>Confirmación</div></div><div class="card"><span class="lbl">Seleccione su notario</span><div class="srch">'+I.search+'Sultán</div><div class="nt"><span class="av">SZ</span><div><b>Notaría Sultán-Zulueta</b><small>Av. Diagonal 550, Pral. 1ª · 08021 Barcelona</small></div><span class="rd"></span></div><span class="lbl" style="display:block;margin-top:18px">Modalidad de firma</span><div class="mods"><div class="mod"><i></i>Presencial en la notaría</div><div class="mod on"><i></i>Videoconferencia</div></div><div class="obs">Observaciones: preferiblemente por la mañana.</div></div><div class="nav"><button class="ob">← Anterior</button><button class="gbtn" data-next>Siguiente →</button></div></div>',
  app:ah('Mis trámites')+'<div class="pac ctr2"><div class="big g">'+I.check+'</div><h3>Solicitud enviada</h3><p>Nº de solicitud <b>2026-004512</b>. El notario revisará su petición y se pondrá en contacto con usted.</p><div class="msg" style="text-align:left"><span class="lbl">Mis mensajes · Notaría Sultán-Zulueta</span><p>Le enviamos el borrador para que lo revise. ¿Le va bien el jueves a las 10:30?</p></div><button class="bbtn wide" data-next>Ver mis citas</button></div>'+tabs(1)},
-{t:'Videollamada con el notario',d:'El día de la cita, entre unos minutos antes en «Mis citas» y pulse «Videoconferencia». El notario comprueba su identidad, comparte el documento en pantalla y se lo lee y explica.',
+{t:'Videollamada con el notario',shots:[['w4-citas','«Mis citas»: el día de la cita, entre aquí y pulse «Videoconferencia»'],['@sim','Videollamada: el notario comprueba su identidad y le lee el documento']],d:'El día de la cita, entre unos minutos antes en «Mis citas» y pulse «Videoconferencia». El notario comprueba su identidad, comparte el documento en pantalla y se lo lee y explica.',
  app:ah('Mis citas')+'<div class="pac"><div class="cita"><div class="dt"><div class="cal"><small>NOV</small><b>20</b></div><div><h4>Acta de manifestaciones</h4><small class="s">Jueves · 10:30 · Notaría Sultán-Zulueta</small></div></div><button class="bbtn wide" data-next>'+I.vid.replace('<svg','<svg width="18" height="18" fill="none" stroke="#fff" stroke-width="2"')+' Videoconferencia</button></div><div class="cita cita2"><div class="dt"><div class="cal"><small>DIC</small><b>04</b></div><div><h4>Consulta de herencia</h4><small class="s">Jueves · 17:00 · Presencial</small></div></div></div></div>'+tabs(2),
  web:'<div class="b3"><div class="vid"><img src="'+ARIEL+'" alt=""><span class="rec"><i></i>EN DIRECTO · 10:31</span><span class="self"></span><span class="nm">Ariel Sultán · Notario</span><div class="ctr"><i><svg viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></i><i>'+I.vid+'</i><i><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8"/></svg></i><i class="end"><svg viewBox="0 0 24 24"><path d="M3 14c5-4 13-4 18 0l-2 3-3-1v-2c-2-1-6-1-8 0v2l-3 1z"/></svg></i></div></div><div class="docp"><span class="lbl">Documento compartido</span><div class="pg"><b>ACTA DE MANIFESTACIONES</b><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><span class="hl"></span></div><span class="mt">Página 1 de 3 · el notario lee el documento</span><button class="gbtn" data-next>Estoy conforme, firmar →</button></div></div>'},
 {t:'Firma y copia',d:'Si está conforme, el notario habilita la firma: usted firma con su certificado digital a través de AutoFirma y después firma el notario. El documento queda autorizado y puede recibir la copia, también en PDF con código CSV.',
@@ -427,11 +428,11 @@ var S=[
 ];
 var sts=document.getElementById('sts'),bs=document.getElementById('bscr'),ps=document.getElementById('pscr'),dsc=document.getElementById('stdesc');
 sts.innerHTML=S.map(function(s,i){return '<li><button type="button" data-i="'+i+'" aria-controls="dvc"><span class="n">'+(i+1)+'</span><b>'+s.t+'</b><span class="d">'+s.d+'</span></button><span class="bar"></span></li>'}).join('');
-function shotsHTML(s,i){return '<div class="shots" data-k="0">'+s.shots.map(function(x,k){return '<img'+(x[2]?' class="fit"':'')+' src="img/videofirma/'+x[0]+'.jpg" alt="Portal Notarial del Ciudadano: '+x[1]+'"'+(i===0&&k===0?'':' loading="lazy"')+' decoding="async">'}).join('')+'<span class="shcap"><b>1/'+s.shots.length+'</b><span></span></span><span class="shdots">'+s.shots.map(function(x,k){return '<i data-k="'+k+'" title="'+x[1]+'"></i>'}).join('')+'</span></div>'}
+function shotsHTML(s,i){return '<div class="shots" data-k="0">'+s.shots.map(function(x,k){return x[0]==='@sim'?'<div class="sl simslide">'+s.web+'</div>':'<img class="sl'+(x[2]?' fit':'')+'" src="img/videofirma/'+x[0]+'.jpg" alt="Portal Notarial del Ciudadano: '+x[1]+'"'+(i===0&&k===0?'':' loading="lazy"')+' decoding="async">'}).join('')+'<span class="shcap"><b>1/'+s.shots.length+'</b><span></span><span class="shdots">'+s.shots.map(function(x,k){return '<i data-k="'+k+'" title="'+x[1]+'"></i>'}).join('')+'</span></span></div>'}
 bs.innerHTML=S.map(function(s,i){return '<div class="scr" data-s="'+i+'"'+(i?' aria-hidden="true"':'')+'>'+(s.shots?shotsHTML(s,i):s.web)+'</div>'}).join('');
 function shot(i,k){var s=S[i];if(!s.shots)return;var w=bs.querySelector('.scr[data-s="'+i+'"] .shots');k=Math.max(0,Math.min(s.shots.length-1,k));w.setAttribute('data-k',k);
- [].forEach.call(w.querySelectorAll('img'),function(im,j){im.classList.toggle('on',j===k)});[].forEach.call(w.querySelectorAll('.shdots i'),function(d,j){d.classList.toggle('on',j===k)});
- w.querySelector('.shcap b').textContent=(k+1)+'/'+s.shots.length;w.querySelector('.shcap span').textContent=s.shots[k][1]}
+ [].forEach.call(w.querySelectorAll('.sl'),function(im,j){im.classList.toggle('on',j===k)});var sim=s.shots[k][0]==='@sim',tg=document.querySelector('.sim');tg.textContent=sim?'Simulación':'Captura real';tg.classList.toggle('real',!sim);[].forEach.call(w.querySelectorAll('.shdots i'),function(d,j){d.classList.toggle('on',j===k)});
+ w.querySelector('.shcap b').textContent=(k+1)+'/'+s.shots.length;w.querySelector('.shcap>span').textContent=s.shots[k][1]}
 function durOf(i){return S[i].shots?Math.max(DUR,S[i].shots.length*3200):DUR}
 ps.innerHTML='<span class="simtag">Simulación</span>'+S.map(function(s,i){return '<div class="scr" data-s="'+i+'">'+s.app+'</div>'}).join('');
 var cur=-1,auto=!matchMedia('(prefers-reduced-motion: reduce)').matches,vis=false,hover=false,t0=0,DUR=7000,raf;
@@ -441,7 +442,7 @@ pp.addEventListener('click',function(){setAuto(!auto)});
 function go(i,user){i=(i+S.length)%S.length;cur=i;
  [].forEach.call(sts.children,function(li,k){li.classList.toggle('on',k===i);li.classList.toggle('done',k<i);li.querySelector('.bar').style.width='0'});
  [].forEach.call(document.querySelectorAll('#dvc .scr'),function(s){var on=+s.getAttribute('data-s')===i;s.classList.toggle('on',on);s.setAttribute('aria-hidden',on?'false':'true')});
- shot(i,0);var tg=document.querySelector('.sim');tg.textContent=S[i].shots?'Captura real':'Simulación';tg.classList.toggle('real',!!S[i].shots);var b4=document.getElementById('b4');if(b4)b4.classList.remove('signed');bs.scrollTop=0;ps.scrollTop=0;
+ var tg=document.querySelector('.sim');tg.textContent='Simulación';tg.classList.remove('real');shot(i,0);var b4=document.getElementById('b4');if(b4)b4.classList.remove('signed');bs.scrollTop=0;ps.scrollTop=0;
  dsc.innerHTML='<b>'+(i+1)+'. '+S[i].t+'</b><p>'+S[i].d+'</p><div class="nx"><button type="button" data-g="-1"'+(i===0?' disabled':'')+'>← Anterior</button><button type="button" data-g="1"'+(i===S.length-1?' disabled':'')+'>Siguiente →</button></div>';
  if(matchMedia('(max-width:980px)').matches)setDev((i===3||i===4)?'web':'phone');
  if(user===true)setAuto(false);el=0;
@@ -451,6 +452,7 @@ dsc.addEventListener('click',function(e){var b=e.target.closest('button[data-g]'
 document.getElementById('dvc').addEventListener('click',function(e){
  if(e.target.closest('#sign')){document.getElementById('b4').classList.add('signed');setAuto(false);bs.scrollTop=0;return}
  var dt=e.target.closest('.shdots i');if(dt){shot(cur,+dt.getAttribute('data-k'));setAuto(false);return}
+ if(e.target.closest('[data-next]')){go(cur+1,true);return}
  var sh=e.target.closest('.shots');if(sh){var k=+sh.getAttribute('data-k')+1;setAuto(false);if(k<S[cur].shots.length)shot(cur,k);else go(cur+1,true);return}
  var n=e.target.closest('[data-next]');if(n){go(cur+1,true)}});
 var dvc=document.getElementById('dvc');
