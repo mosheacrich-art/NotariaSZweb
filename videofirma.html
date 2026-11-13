@@ -329,12 +329,13 @@ section.blk{padding-block:clamp(3.2rem,7vw,5.6rem)}
 .sts b{font:600 .88rem 'Source Sans 3';white-space:nowrap}
 .sts .d,.sts .bar,.play{display:none}
 .sts li.on button{border-color:var(--blue)!important;background:#eef3fa}
-.devsw{display:flex;justify-content:center;margin:1.1rem 0 1rem}
+.devsw{display:none!important}
+.dvc{margin-top:1.1rem}
 .devsw div{display:inline-flex;background:#eef1f5;border-radius:99px;padding:3px}
 .devsw button{border:0;background:none;border-radius:99px;padding:.5rem 1.1rem;font:600 .86rem 'Source Sans 3';color:var(--navy);cursor:pointer}
 .devsw button[aria-pressed=true]{background:var(--navy);color:#fff}
 .bwrap,.pwrap{position:relative;left:auto;right:auto;top:auto;bottom:auto;margin:0 auto}
-.dvc[data-dev=phone] .bwrap,.dvc[data-dev=web] .pwrap{display:none}
+.bwrap{display:none}
 .stdesc{display:block;margin-top:1.2rem;background:#fff;border:1px solid var(--line);border-top:3px solid var(--blue);padding:1rem 1.1rem}
 .stdesc b{display:block;font:500 1.15rem 'Libre Caslon Text',serif;color:var(--navy);margin-bottom:.3rem}
 .stdesc p{margin:0;font-size:.95rem;color:#4a4a4a;line-height:1.6}
@@ -532,7 +533,6 @@ function go(i,user){i=(i+S.length)%S.length;cur=i;
  [].forEach.call(document.querySelectorAll('#dvc .scr'),function(s){var on=+s.getAttribute('data-s')===i;s.classList.toggle('on',on);s.setAttribute('aria-hidden',on?'false':'true')});
  var tg=document.querySelector('.sim');tg.textContent='Simulación';tg.classList.remove('real');shot(i,0);var b4=document.getElementById('b4');if(b4)b4.classList.remove('signed');bs.scrollTop=0;ps.scrollTop=0;
  dsc.innerHTML='<b>'+(i+1)+'. '+S[i].t+'</b><p>'+S[i].d+'</p><div class="nx"><button type="button" data-g="-1"'+(i===0?' disabled':'')+'>← Anterior</button><button type="button" data-g="1"'+(i===S.length-1?' disabled':'')+'>Siguiente →</button></div>';
- if(matchMedia('(max-width:980px)').matches)setDev((i===3||i===4)?'web':'phone');
  if(user===true)setAuto(false);el=0;
  var a=sts.children[i];if(a&&sts.scrollWidth>sts.clientWidth){sts.scrollTo({left:a.offsetLeft-16,behavior:'smooth'})}}
 sts.addEventListener('click',function(e){var b=e.target.closest('button');if(b)go(+b.getAttribute('data-i'),true)});
