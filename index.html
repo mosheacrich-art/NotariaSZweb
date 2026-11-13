@@ -573,6 +573,22 @@ body{padding-bottom:0}
 .hero h1 em{color:#16224a;text-shadow:none}.hero .eyebrow{color:#9db6e6!important;text-shadow:0 1px 10px rgba(0,0,0,.55)}.hero .btn.pri{background:#1b2652}.hero .btn.pri:hover{background:#121b3d}
 
 @media(max-width:760px){#notarios .tok{width:112px;height:47px}}
+
+/* Dónde estamos: transporte + mapa */
+.dtxt .trh{font:600 .74rem 'Source Sans 3',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--blue);margin:1.8rem 0 .2rem}
+.tr{list-style:none;margin:0 0 1.6rem;padding:0;max-width:540px}
+.tr li{display:grid;grid-template-columns:40px minmax(0,1fr) auto;gap:.9rem;align-items:center;padding:.8rem 0;border-bottom:1px solid var(--line)}
+.tr .ico{width:40px;height:40px;border-radius:50%;background:#eef3fa;display:grid;place-items:center}
+.tr .ico svg{width:20px;height:20px;fill:none;stroke:var(--blue);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.tr b{display:block;font:600 .66rem 'Source Sans 3',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);margin-bottom:.1rem}
+.tr .stn{color:var(--navy);font-weight:600;font-size:.98rem;margin-right:.5rem}
+.tr .lns{display:inline-flex;flex-wrap:wrap;gap:.25rem;vertical-align:1px}
+.tr .lns i{font:700 .68rem/1 'Source Sans 3',sans-serif;font-style:normal;letter-spacing:.02em;color:var(--navy);border:1px solid #c9d3de;border-radius:3px;padding:.24rem .38rem;background:#fff}
+.tr em{font-style:normal;font-size:.8rem;color:var(--mute);white-space:nowrap}
+.dgo{gap:.55rem}.dgo svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.dmap{margin-top:clamp(2.4rem,5vw,4rem)}
+.dmap iframe{display:block;width:100%;height:clamp(300px,38vw,440px);border:0;border-top:3px solid var(--blue);background:#eef1f5;filter:grayscale(.3) contrast(1.03);box-shadow:0 30px 60px -40px rgba(0,32,52,.45)}
+@media(max-width:560px){.tr li{gap:.7rem;grid-template-columns:34px minmax(0,1fr) auto}.tr .ico{width:34px;height:34px}.tr .stn{font-size:.93rem}.tr em{font-size:.74rem}.dgo{width:100%;justify-content:center}}
 </style>
 
 <header id="hd"><div class="w bar">
@@ -677,8 +693,10 @@ body{padding-bottom:0}
 <div class="dtxt rv"><span class="eyebrow">Contacto</span><h2>Dónde estamos</h2>
 <p>La <b>Notaría</b> está ubicada en la <b>Avda. Diagonal 550</b> de Barcelona. Punto neurálgico de oficinas bancarias, despachos y empresas.</p>
 <p>Fácil acceso desde cualquier punto de la ciudad.</p>
+<h3 class="trh">Cómo llegar · a pie desde</h3><ul class="tr"><li><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="14" rx="3"/><path d="M5 11h14M9 21l1.5-4M15 21l-1.5-4"/><circle cx="9" cy="14" r=".6"/><circle cx="15" cy="14" r=".6"/></svg></span><div><b>Metro</b><span class="stn">Diagonal</span><span class="lns"><i>L3</i><i>L5</i></span></div><em>9 min</em></li><li><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 3h10a2 2 0 0 1 2 2v9a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3V5a2 2 0 0 1 2-2z"/><path d="M5 10h14M8 21l2-4M16 21l-2-4M12 3v7"/></svg></span><div><b>Ferrocarrils (FGC)</b><span class="stn">Gràcia · Provença</span><span class="lns"><i>L6</i><i>L7</i><i>S1</i><i>S2</i></span></div><em>8 min</em></li><li><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 2h8M12 2v3M7 5h10a2 2 0 0 1 2 2v8a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3V7a2 2 0 0 1 2-2z"/><path d="M5 12h14M8 22l2-4M16 22l-2-4"/></svg></span><div><b>Tranvía</b><span class="stn">Francesc Macià</span><span class="lns"><i>T1</i><i>T2</i><i>T3</i></span></div><em>9 min</em></li><li><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="15" rx="3"/><path d="M4 11h16M8 21v-3M16 21v-3M4 7h16"/><circle cx="8" cy="14.5" r=".6"/><circle cx="16" cy="14.5" r=".6"/></svg></span><div><b>Autobús</b><span class="stn">Diagonal – Muntaner, en la puerta</span><span class="lns"><i>6</i><i>7</i><i>33</i><i>H8</i><i>V13</i></span></div><em>1 min</em></li></ul><a class="btn pri dgo" href="https://www.google.com/maps/dir/?api=1&amp;destination=Notaria%20SZ%2C%20Avinguda%20Diagonal%20550%2C%2008021%20Barcelona" target="_blank" rel="noopener">Cómo llegar en Google Maps <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
 </div>
 </div>
+<div class="w dmap rv"><iframe title="Mapa: Notaría SZ, Avinguda Diagonal 550, Barcelona" src="https://maps.google.com/maps?q=Notaria%20SZ%2C%20Avinguda%20Diagonal%20550%2C%2008021%20Barcelona&amp;z=16&amp;hl=es&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>
 </section>
 <section class="consulta" id="consulta"><div class="w cgrid">
 <div class="cl rv"><span class="eyebrow">Contacto</span><h2>¿Tienes una consulta?</h2>
